@@ -7,6 +7,16 @@ ServerManager::ServerManager(ushort port, QObject *parent)
     setupServer(port);
 }
 
+void ServerManager::disconnectALlClients()
+{
+    for (QTcpSocket *client : std::as_const(_clients)){
+        client->disconnectFromHost();
+        if (client->state() != QTcpSocket::UnconnectedState) {
+            client->waitForDisconnected();
+        }
+    }
+}
+
 void ServerManager::newClientConnectionReceived(){
 
     auto client = _server->nextPendingConnection();

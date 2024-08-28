@@ -22,6 +22,8 @@ private slots:
     void newClientConnected(QTcpSocket *client);
     void clientDisconnected(QTcpSocket *client);
 
+    void on_btnDisconnectAll_clicked();
+
 private:
     Ui::MainWindow *ui;
     ServerManager *_server;

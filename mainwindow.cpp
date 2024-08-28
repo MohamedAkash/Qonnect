@@ -36,3 +36,11 @@ void MainWindow::setupServer(){
     connect(_server, &ServerManager::clientDisconnected, this, &MainWindow::clientDisconnected);
 
 }
+
+void MainWindow::on_btnDisconnectAll_clicked()
+{
+    if(_server){
+        _server->disconnectALlClients();
+    }
+}
+

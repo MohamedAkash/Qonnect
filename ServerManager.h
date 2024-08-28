@@ -9,6 +9,7 @@ class ServerManager : public QObject
     Q_OBJECT
 public:
     explicit ServerManager(ushort port = 4500, QObject *parent = nullptr);
+    void disconnectALlClients();
 
 private slots:
     void newClientConnectionReceived();
