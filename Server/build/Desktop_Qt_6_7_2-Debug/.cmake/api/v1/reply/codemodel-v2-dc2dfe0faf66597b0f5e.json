@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-3888248c898f19c50e0e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Qonnect",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Qonnect::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Qonnect-Debug-59b22e3ec309380a4aed.json",
+					"name" : "Qonnect",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Qonnect_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Qonnect_autogen-Debug-f2e6bb3617d73898a79b.json",
+					"name" : "Qonnect_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Qonnect_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Qonnect_autogen_timestamp_deps-Debug-5f5d8f1d2b79f94e2817.json",
+					"name" : "Qonnect_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/mohamed/Documents/PersonalWork/Qonnect/Server/build/Desktop_Qt_6_7_2-Debug",
+		"source" : "/home/mohamed/Documents/PersonalWork/Qonnect/Server"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

@@ -1,0 +1,12 @@
+# ninja log v6
+2	282	1725038586292574098	Client_autogen/timestamp	a7a3dc343eb2df2f
+2	282	1725038586292574098	Client_autogen/mocs_compilation.cpp	a7a3dc343eb2df2f
+2	282	1725038586292574098	/home/mohamed/Documents/PersonalWork/Qonnect/Client/build/Desktop_Qt_6_7_2-Debug/Client_autogen/timestamp	a7a3dc343eb2df2f
+2	282	1725038586292574098	/home/mohamed/Documents/PersonalWork/Qonnect/Client/build/Desktop_Qt_6_7_2-Debug/Client_autogen/mocs_compilation.cpp	a7a3dc343eb2df2f
+285	1550	1725038586300574445	CMakeFiles/Client.dir/ClientManager.cpp.o	1ad6faedb7083b9b
+284	1746	1725038586296574270	CMakeFiles/Client.dir/main.cpp.o	3f65bf8c127bedca
+284	1829	1725038586296574270	CMakeFiles/Client.dir/Client_autogen/mocs_compilation.cpp.o	f9485a1148e0eed2
+285	1831	1725038586300574445	CMakeFiles/Client.dir/ChatProtocol.cpp.o	ab43aa3f9962b141
+285	1843	1725038586300574445	CMakeFiles/Client.dir/ChatItemWidget.cpp.o	2b225dc8d17461c6
+284	2619	1725038586296574270	CMakeFiles/Client.dir/mainwindow.cpp.o	3516ddc2e386b81b
+2619	2922	1725038588632675393	Client	96e9c48a2668912d
