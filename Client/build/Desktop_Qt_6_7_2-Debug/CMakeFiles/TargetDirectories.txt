@@ -1,9 +1,0 @@
-/home/mohamed/Documents/PersonalWork/Qonnect/Client/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/Client.dir
-/home/mohamed/Documents/PersonalWork/Qonnect/Client/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/edit_cache.dir
-/home/mohamed/Documents/PersonalWork/Qonnect/Client/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/rebuild_cache.dir
-/home/mohamed/Documents/PersonalWork/Qonnect/Client/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/list_install_components.dir
-/home/mohamed/Documents/PersonalWork/Qonnect/Client/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/install.dir
-/home/mohamed/Documents/PersonalWork/Qonnect/Client/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/install/local.dir
-/home/mohamed/Documents/PersonalWork/Qonnect/Client/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/install/strip.dir
-/home/mohamed/Documents/PersonalWork/Qonnect/Client/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/Client_autogen_timestamp_deps.dir
-/home/mohamed/Documents/PersonalWork/Qonnect/Client/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/Client_autogen.dir

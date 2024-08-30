@@ -36,6 +36,7 @@ Thumbs.db
 /.qmake.stash
 build/
 Client/build/
+Server/build/
 
 # qtcreator generated files
 *.pro.user*
