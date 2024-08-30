@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "ClientChatWidget.h"
 #include "ServerManager.h"
 
 QT_BEGIN_NAMESPACE
@@ -17,12 +18,13 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
 private slots:
     void newClientConnected(QTcpSocket *client);
     void clientDisconnected(QTcpSocket *client);
-
     void on_btnDisconnectAll_clicked();
+    void setClientName(QString prevName, QString name);
+    void setClientStatus(ChatProtocol::Status status);
+    void on_tbChats_tabCloseRequested(int index);
 
 private:
     Ui::MainWindow *ui;

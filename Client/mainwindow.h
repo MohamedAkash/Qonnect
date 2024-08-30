@@ -20,11 +20,23 @@ public:
 
 private slots:
     void on_actionConnect_triggered();
-    void dataReceived(QByteArray data);
+    void dataReceived(QString message);
     void on_btnSend_clicked();
+    void on_lnClientName_editingFinished();
+    void on_cmbStatus_currentIndexChanged(int index);
+    void on_lnMessage_textChanged(const QString &arg1);
+    void onTyping();
+    void on_btnSendFile_clicked();
+    void onRejectReceivingFile();
+    void onInitReceivingFile(QString clientName, QString fileName, qint64 fileSize);
+    void onConnectionACK(QString myName, QStringList clientsName);
+    void onNewClientConnectedToServer(QString clientName);
+    void onClientNameChanged(QString prevName, QString clientName);
+    void onClientDisconnected(QString clientName);
 
 private:
     Ui::MainWindow *ui;
     ClientManager *_client;
+    void setupClient();
 };
 #endif // MAINWINDOW_H

@@ -11,13 +11,16 @@ class ClientManager : public QObject
     Q_OBJECT
 public:
     explicit ClientManager(QHostAddress ip = QHostAddress::LocalHost, ushort port = 4500, QObject *parent = nullptr);
+    explicit ClientManager(QTcpSocket *client, QObject *parent = nullptr);
 
     void connectToServer();
+    void disconnectFromHost();
 
-    void sendMessage(QString message, QString receiver);
+    void sendMessage(QString message);
     void sendName(QString name);
     void sendStatus(ChatProtocol::Status status);
     void sendIsTyping();
+    QString name() const;
 
     void sendInitSendingFile(QString fileName);
     void sendAcceptFile();
@@ -26,17 +29,14 @@ public:
 signals:
     void connected();
     void disconnected();
-    void textMessageReceived(QString message);
+    //    void dataReceived(QByteArray data);
+    void textMessageReceived(const QString message, QString receiver);
     void isTyping();
-    void nameChanged(QString name);
+    void nameChanged(QString prevName, QString name);
     void statusChanged(ChatProtocol::Status status);
     void initReceivingFile(QString clientName, QString fileName, qint64 fileSize);
     void rejectReceivingFile();
-
-    void connectionACK(QString myName, QStringList clientsName);
-    void newClientConnectedToServer(QString clientName);
-    void clientNameChanged(QString prevName, QString clientName);
-    void clientDisconnected(QString clientName);
+    void fileSaved(QString path);
 
 private slots:
     void readyRead();
@@ -50,6 +50,7 @@ private: //fields
 private: //methods
     void setupClient();
     void sendFile();
+    void saveFile();
 };
 
 #endif // CLIENTMANAGER_H
