@@ -5,7 +5,9 @@
 
 #include <QObject>
 #include <QTcpSocket>
-
+#include <QHostAddress>
+#include <QAudioSource>
+#include <QUdpSocket>
 class ClientManager : public QObject
 {
     Q_OBJECT
@@ -22,6 +24,9 @@ public:
     void sendInitSendingFile(QString fileName);
     void sendAcceptFile();
     void sendRejectFile();
+
+    void startVoiceCommunication();
+    void stopVoiceCommunication();
 
 signals:
     void connected();
@@ -40,6 +45,8 @@ signals:
 
 private slots:
     void readyRead();
+    void onAudioDataAvailable();
+    void handleStateChanged(QAudio::State newState);
 
 private: //fields
     QTcpSocket *_socket;
@@ -47,9 +54,18 @@ private: //fields
     ushort _port;
     ChatProtocol _protocol;
     QString _tmpFileName;
+
+    // Voice communication fields
+    QAudioSource *_audioSource;
+    QUdpSocket *_udpSocket;
+
+    QHostAddress _recipientIP;  // IP address of the recipient
+    quint16 _recipientPort;     // Port for vocie communication
+
 private: //methods
     void setupClient();
     void sendFile();
+    void setupAudio();
 };
 
 #endif // CLIENTMANAGER_H

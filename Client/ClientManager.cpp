@@ -1,4 +1,6 @@
 #include "ClientManager.h"
+#include <QAudioFormat>
+#include <QMediaDevices>
 
 ClientManager::ClientManager(QHostAddress ip, ushort port, QObject *parent)
     : QObject{parent},
@@ -6,6 +8,7 @@ ClientManager::ClientManager(QHostAddress ip, ushort port, QObject *parent)
     _port(port)
 {
     setupClient();
+    setupAudio();
 }
 
 void ClientManager::connectToServer()
@@ -96,6 +99,12 @@ void ClientManager::readyRead()
     }
 }
 
+void ClientManager::onAudioDataAvailable()
+{
+    // QByteArray audioData = _audioDevice->readAll();
+    // _udpSocket->writeDatagram(audioData, _recipientIP, _recipientPort); // Send to the recipient
+}
+
 void ClientManager::setupClient()
 {
     _socket = new QTcpSocket(this);
@@ -107,4 +116,61 @@ void ClientManager::setupClient()
 void ClientManager::sendFile()
 {
     _socket->write(_protocol.setFileMessage(_tmpFileName));
+}
+
+void ClientManager::startVoiceCommunication()
+{
+    // Ensure audio input is properly started
+    // if (_audioInput && !_audioInput->state() == QAudio::ActiveState) {
+    //     _audioDevice = _audioInput->start();  // Start capturing audio data
+    //     connect(_audioDevice, &QIODevice::readyRead, this, &ClientManager::onAudioDataAvailable);
+    // }
+}
+
+void ClientManager::stopVoiceCommunication()
+{
+    // _audioInput->stop();
+}
+
+void ClientManager::setupAudio()
+{
+    // Set up the audio format
+    QAudioFormat format;
+    format.setSampleRate(8000);  // Sample rate suitable for voice
+    format.setChannelCount(1);   // Mono
+    format.setSampleFormat(QAudioFormat::Int16);  // 16-bit samples
+
+    QAudioDevice info = QMediaDevices::defaultAudioInput();
+    if (!info.isFormatSupported(format)) {
+        qWarning() << "Default format not supported, trying to use the nearest.";
+        format = info.preferredFormat();  // Use the nearest supported format
+    }
+
+    // Create QAudioSource for capturing audio
+    _audioSource = new QAudioSource(format, this);
+
+    // Create UDP socket for transmitting audio data
+    _udpSocket = new QUdpSocket(this);
+
+    connect(_audioSource, &QAudioSource::stateChanged, this, &ClientManager::handleStateChanged);
+}
+
+void ClientManager::handleStateChanged(QAudio::State newState)
+{
+    switch (newState) {
+    case QAudio::IdleState:
+        // Finished recording, so stop capturing audio
+        stopVoiceCommunication();
+        break;
+
+    case QAudio::StoppedState:
+        if (_audioSource->error() != QAudio::NoError) {
+            // Handle error
+            qWarning() << "Audio input error occurred";
+        }
+        break;
+
+    default:
+        break;
+    }
 }

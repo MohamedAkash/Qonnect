@@ -84,6 +84,13 @@ void ServerManager::onClientDisconnected()
 void ServerManager::setupServer(ushort port)
 {
     _server = new QTcpServer(this);
-    connect(_server, &QTcpServer::newConnection, this, &ServerManager::newClientConnectionReceived);
-    _server->listen(QHostAddress::Any, port);
+    // Bind the server to all available network interafaces
+    QHostAddress serverAddress = QHostAddress::Any;
+    if(!_server->listen(serverAddress, port)){
+        qDebug() << "Server could not start";
+    }
+    else {
+        qDebug() << "Server started and listening on all interfaces, port:" << port;
+        connect(_server, &QTcpServer::newConnection, this, &ServerManager::newClientConnectionReceived);
+    }
 }

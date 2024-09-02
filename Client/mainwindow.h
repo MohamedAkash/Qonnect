@@ -33,6 +33,7 @@ private slots:
     void onNewClientConnectedToServer(QString clientName);
     void onClientNameChanged(QString prevName, QString clientName);
     void onClientDisconnected(QString clientName);
+    void on_btnVoiceCall_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -160,3 +160,29 @@ void MainWindow::onClientDisconnected(QString clientName)
     }
 }
 
+
+void MainWindow::on_btnVoiceCall_clicked()
+{
+    // // Get the selected index from the combo box
+    // int index = ui->cmbDestination->currentIndex();
+
+    // if (index == -1) {
+    //     QMessageBox::warning(this, "No Selection", "Please select a destination client.");
+    //     return;
+    // }
+
+    // // Retrieve the IP address and port associated with the selected client
+    // QVariant clientData = ui->cmbDestination->itemData(index);
+    // QPair<QHostAddress, quint16> clientInfo = clientData.value<QPair<QHostAddress, quint16>>();
+
+    // QHostAddress recipientIP = clientInfo.first;
+    // quint16 recipientPort = clientInfo.second;
+
+    // // Pass the IP and port to the ClientManager for voice communication
+    // _client->_recipientIP = recipientIP;
+    // _client->_recipientPort = recipientPort;
+
+    // // Start the voice communication
+    // _client->startVoiceCommunication();
+}
+
