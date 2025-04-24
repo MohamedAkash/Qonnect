@@ -96,14 +96,11 @@ void ClientChatWidget::onFileSaved(QString path)
 
 void ClientChatWidget::on_lblOpenFolder_linkActivated(const QString &link)
 {
-    // Assuming _client->name() returns just the directory name, not the full path
     QString directoryName = _client->name();
 
-    // Construct the full path by combining with a base directory
-    QString basePath = QDir::currentPath(); // or use another appropriate base path
+    QString basePath = QDir::currentPath();
     QString fullPath = QDir::cleanPath(basePath + QDir::separator() + directoryName);
 
-    // Check if the directory exists and is accessible
     if (QFileInfo::exists(fullPath) && QFileInfo(fullPath).isDir()) {
         QDesktopServices::openUrl(QUrl::fromLocalFile(fullPath));
     } else {
