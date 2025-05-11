@@ -44,10 +44,6 @@ Qonnect is a modern communication framework built with C++ and the Qt framework.
 2. Launch the client application and connect to the server using the provided IP and port.
 3. Enjoy real-time messaging and file-sharing features.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 
 - Built using the [Qt Framework](https://www.qt.io/).
