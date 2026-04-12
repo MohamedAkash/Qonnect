@@ -1,49 +1,48 @@
 # Qonnect
 
-Qonnect is a modern communication framework built with C++ and the Qt framework. It facilitates seamless client-server communication, offering essential features such as text messaging, file sharing, and user status management.
+A multi-client TCP chat application built in C++ with Qt 6. Qonnect 
+implements a custom binary protocol over TCP for real-time messaging, 
+file transfer, typing indicators, and user status management.
 
 ## Features
 
-- **Messaging**: Supports text messaging between clients with acknowledgment mechanisms.
-- **File Sharing**: Enables secure file transfer between connected users.
-- **User Status Management**: Allows users to set and share their availability status (e.g., Available, Busy, Away).
-- **Typing Indicators**: Indicates when a user is typing a message.
-- **Client Management**: Manages connections, disconnections, and interactions between clients and the server.
+- **Real-time messaging** — send to a specific client by name or broadcast to all
+- **File transfer** — accept/reject flow with file size preview dialog
+- **Typing indicators** — live "X is typing..." notification that auto-clears
+- **User status** — Available, Away, Busy with tab icon updates on the server
+- **Name changes** — rename mid-session; all clients and file folders update automatically
+- **Connection events** — clients notified when others join or leave
 
-## Requirements
+## Tech Stack
 
-- **C++ Compiler**: Compatible with C++17 or later.
-- **Qt Framework**: Requires Qt 5 or 6 with Widgets and Network modules.
-- **CMake**: Minimum version 3.16.
+- **C++17** with Qt 6 (Widgets + Network modules)
+- **QTcpSocket / QTcpServer** for TCP communication
+- **QDataStream** for binary protocol serialization
+- **CMake 3.16+**
 
-## Installation
+## Project Structure
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/MohamedAkash/Qonnect.git
-   cd Qonnect
-   ```
+```
+Qonnect/
+├── Server/   — TCP server, client registry, per-client UI tabs, message routing
+└── Client/   — Client socket, chat UI, file dialog, destination dropdown
+```
 
-2. Build the project:
-   ```bash
-   mkdir build
-   cd build
-   cmake ..
-   make
-   ```
+## Build & Run
 
-3. Run the server and client applications:
-   ```bash
-   ./Server/QonnectServer
-   ./Client/QonnectClient
-   ```
+```bash
+git clone https://github.com/MohamedAkash/Qonnect.git
 
-## Usage
+# Server
+cd Server && mkdir build && cd build
+cmake .. && make
+./QonnectServer
 
-1. Start the server application to listen for client connections.
-2. Launch the client application and connect to the server using the provided IP and port.
-3. Enjoy real-time messaging and file-sharing features.
+# Client (new terminal — repeat for multiple clients)
+cd ../../Client && mkdir build && cd build
+cmake .. && make
+./Client
+```
 
-## Acknowledgments
-
-- Built using the [Qt Framework](https://www.qt.io/).
+Start the server first, then launch one or more client instances. 
+Connects to `localhost:4500` by default.
